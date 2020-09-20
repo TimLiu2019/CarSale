@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CarSale.Models;
 
 namespace CarSale.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class CarSaleDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public CarSaleDbContext(DbContextOptions<CarSaleDbContext> options)
             : base(options)
         {
         }
+        public DbSet<CarSale.Models.CarModel> CarModel { get; set; }
     }
 }
