@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewData["Title"] = "NewCar";
+}
+
+@model IEnumerable<CarSale.Models.CarModel>
+
+
+
+<h1>Search New Vehicles</h1>
+
+<!--<p>
+    <a asp-action="Create">Create New</a>
+</p>  -->
+<div class="row">
+    <div class="col-sm-4">
+        <form asp-action="NewCar" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                    <input type="submit" value="Go" class="btn btn-primary" />
+
+                </p>
+                <p><a asp-action="NewCar">Back to Full List</a></p>
+            </div>
+        </form>
+        <label> Make:</label>
+        <ul class="list-unstyled ml-3">
+            <li>Dodge (2)</li>
+            <li>BMW (5)</li>
+            <li>Honda (2)</li>
+        </ul>
+
+        <label> Year:</label>
+        <form asp-action="NewCar" method="get" class="form-inline">
+
+            <input type="number" class="form-control col-sm-3" id="from-year" name="FromYear" value="@ViewData["FromYear"]">
+
+            -
+
+            <input type="number" class=" form-control col-sm-3 " id="to-year" name="ToYear" value="@ViewData["ToYear"]">
+
+            <input type="submit" value="Update" class="btn btn-primary ml-2" />
+        </form>
+
+        <label class="mt-3"> Price:</label>
+        <form asp-action="NewCar" method="get" class="form-inline">
+
+            <input type="number" class="form-control col-sm-3" id="from-price" name="FromPrice" value="@ViewData["FromPrice"]">
+
+            -
+
+            <input type="number" class=" form-control col-sm-3 " id="to-price" name="ToPrice" value="@ViewData["ToPrice"]">
+
+            <input type="submit" value="Update" class="btn btn-primary ml-2" />
+        </form>
+
+        <label class="mt-3"> Mileage:</label>
+        <form asp-action="NewCar" method="get" class="form-inline">
+
+            <input type="number" class="form-control col-sm-3" id="from-mileage" name="FromMileage" value="@ViewData["FromMileage"]">
+
+            -
+
+            <input type="number" class=" form-control col-sm-3 " id="to-mileage" name="ToMileage" value="@ViewData["ToMileage"]">
+
+            <input type="submit" value="Update" class="btn btn-primary ml-2" />
+        </form>
+    </div>
+    <div class="col-sm-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Make)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Model)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Year)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Color)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Engine)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mileage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CarImage)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Make)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Year)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Engine)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mileage)
+                        </td>
+                        <td>
+                            <img src="~/images/@item.CarImage"
+                                  width="120" 
+                                 asp-append-version="true" />
+
+
+                        </td> 
+                        <td>
+                            <!--  <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |-->
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary"> View </a>
+                            <!--  <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>-->
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- Above both column class names end with 6, which adds up to 12 -->
+    
+</div>
+<div class="mt-5">
+    <div style="margin-top:35px">
+        <button style="float:left; margin-left:20px;background-color:#0e60e7;color:white;border-radius: 4px;border: none;  "> Search New Vehicles >></button>
+        <button style="margin-left:30px;background-color:#0e60e7;color:white;border-radius: 4px;border: none;"> Search Used Vehicles >></button>
+    </div>
+    <div>
+        <button style="float:right; margin-left:5px;background-color:#0e60e7;color:white;border-radius: 4px;border: none; "> Click Me To Chat >></button>
+        <img src="~/images/message-icon_8.svg" style=" height: 30px; float: right;">
+    </div>
+</div>
+   
+
+
+

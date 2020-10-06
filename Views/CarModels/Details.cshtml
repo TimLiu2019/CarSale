@@ -10,42 +10,57 @@
     <h4>Car</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Make)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(car => car.Make)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Make)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(car => car.Make)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Model)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(car => car.Model)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Model)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(car => car.Model)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Year)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(car => car.Year)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Year)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(car => car.Year)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Color)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(car => car.Color)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Color)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(car => car.Color)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Engine)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(car => car.Engine)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Engine)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(car => car.Engine)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.pictureId)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(car => car.Price)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.pictureId)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(car => car.Price)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(car => car.Mileage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(car => car.Mileage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(car => car.CarImage)
+        </dt>
+        <dd class="col-sm-2">
+            <img src="~/images/@Html.DisplayFor(model =>model.CarImage)"
+                 width="120" 
+                 asp-append-version="true" />
+        </dd>
+        
     </dl>
 </div>
 <div>

@@ -9,6 +9,15 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -28,7 +37,13 @@
                 @Html.DisplayNameFor(model => model.Engine)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.pictureId)
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mileage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CarImage)
             </th>
             <th></th>
         </tr>
@@ -52,7 +67,13 @@
                 @Html.DisplayFor(modelItem => item.Engine)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.pictureId)
+                @Html.DisplayFor(model => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Mileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarImage)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

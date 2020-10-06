@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace CarSale.Models
 {
@@ -21,7 +22,15 @@ namespace CarSale.Models
         [Required]
         public string Engine { get; set; }
 
-        public string pictureId { get; set; }
+        public int Price { get; set; }
 
+        public int Mileage { get; set; }
+
+        public bool isUsed { get; set; }
+
+        [Required]
+        public string CarImage { get; set; }
+
+     //   public bool isNew { get; set; }
     }
 }
