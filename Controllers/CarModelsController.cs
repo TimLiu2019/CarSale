@@ -62,6 +62,33 @@ namespace CarSale.Controllers
         {
             var cars = from s in _context.CarModel
                        select s;
+            cars = cars.Where(s => s.isUsed == false);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cars = cars.Where(s => s.Make.Contains(searchString) || s.Model.Contains(searchString));
+            }
+            if (FromYear.HasValue && ToYear.HasValue )
+            {
+                cars = cars.Where(s => s.Year >= FromYear && s.Year <= ToYear);
+            }
+            if (FromPrice.HasValue && ToPrice.HasValue)
+            {
+                cars = cars.Where(s => s.Price >= FromPrice && s.Price <= ToPrice);
+            }
+            if (FromMileage.HasValue && ToMileage.HasValue)
+            {
+                cars = cars.Where(s => s.Mileage >= FromMileage && s.Mileage <= ToMileage);
+            }
+            return View(await cars.ToListAsync());
+        }
+
+        // GET:  new car and Models
+        public async Task<IActionResult> UsedCar(string searchString, int? FromYear, int? ToYear, int? FromPrice, int? ToPrice, int? FromMileage, int? ToMileage)
+        {
+            var cars = from s in _context.CarModel
+                       select s;
+
+            cars = cars.Where(s => s.isUsed == true);
             if (!String.IsNullOrEmpty(searchString))
             {
                 cars = cars.Where(s => s.Make.Contains(searchString) || s.Model.Contains(searchString));
