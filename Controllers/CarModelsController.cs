@@ -62,7 +62,7 @@ namespace CarSale.Controllers
         {
             var cars = from s in _context.CarModel
                        select s;
-            cars = cars.Where(s => s.isUsed == false);
+            cars = cars.Where(s => s.IsUsed == false);
             if (!String.IsNullOrEmpty(searchString))
             {
                 cars = cars.Where(s => s.Make.Contains(searchString) || s.Model.Contains(searchString));
@@ -88,7 +88,7 @@ namespace CarSale.Controllers
             var cars = from s in _context.CarModel
                        select s;
 
-            cars = cars.Where(s => s.isUsed == true);
+            cars = cars.Where(s => s.IsUsed == true);
             if (!String.IsNullOrEmpty(searchString))
             {
                 cars = cars.Where(s => s.Make.Contains(searchString) || s.Model.Contains(searchString));
@@ -110,6 +110,24 @@ namespace CarSale.Controllers
 
         // GET: CarModels/Details/5
         public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var carModel = await _context.CarModel
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (carModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(carModel);
+        }
+
+        // GET: CarModels/BookTestDrive/5
+        public async Task<IActionResult> BookTestDrive(int? id)
         {
             if (id == null)
             {

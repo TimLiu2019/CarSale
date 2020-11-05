@@ -13,7 +13,9 @@ namespace CarSale.Data.Migrations
     [Migration("20200912184358_initialModel")]
     partial class initialModel
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+       // protected virtual void BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder);
+
+        protected virtual void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

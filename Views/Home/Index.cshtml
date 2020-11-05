@@ -1,5 +1,5 @@
 ﻿
-
+@model CarSale.Models.CarModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +15,6 @@
 
         img {
             vertical-align: middle;
-            
-            
         }
         /* Caption text */
         .text {
@@ -61,12 +59,13 @@
         }
 
         /*  button*/
-        .button{
+        .button {
             opacity: 1;
-           transition: 0.3s;
-           cursor:pointer;
+            transition: 0.3s;
+            cursor: pointer;
         }
-          .button:hover {
+
+            .button:hover {
                 opacity: 0.6;
             }
 
@@ -101,13 +100,12 @@
         <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
     </div>
     <div style="margin-top:35px">
-        <button style="float:left; margin-left:20px;background-color:#0e60e7;color:white;border-radius: 4px;border: none;  "> Search New Vehicles >></button>
-        <button style="margin-left:30px;background-color:#0e60e7;color:white;border-radius: 4px;border: none;"> Search Used Vehicles >></button>
+        <a class="btn btn-primary float-left mr-2  " asp-area="" asp-controller="CarModels" asp-action="NewCar">Search New Vehicles >> </a>
+        <a class="btn btn-primary" asp-area="" asp-controller="CarModels" asp-action="UsedCar">Search Used Vehicles >> </a>
+        <!-- <a style="float:left; margin-left:20px;background-color:#0e60e7;color:white;border-radius: 4px;border: none;  " class="btn btn-primary mb-3" asp-area="" asp-controller="CarModels" asp-action="NewCar"> Search New Vehicles >></a>
+         <button style="margin-left:30px;background-color:#0e60e7;color:white;border-radius: 4px;border: none;" asp-area="" asp-controller="CarModels" asp-action="UsedCar"> Search Used Vehicles >></button> -->
     </div>
-    <div>
-        <button style="float:right; margin-left:5px;background-color:#0e60e7;color:white;border-radius: 4px;border: none; "> Click Me To Chat >></button>
-        <img src="~/images/message-icon_8.svg" style=" height: 30px; float: right;">
-    </div>
+
 
     <script>
         var slideIndex = [1, 1];

@@ -34,7 +34,7 @@ namespace CarSale.ViewModels
 
         public int Mileage { get; set; }
 
-        public bool isUsed { get; set; }
+        public bool IsUsed { get; set; }
 
         [Required(ErrorMessage = "Please choose car image")]
         [Display(Name = "Car Image")]

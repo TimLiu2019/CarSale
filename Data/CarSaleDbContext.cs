@@ -13,6 +13,10 @@ namespace CarSale.Data
             : base(options)
         {
         }
+
+
         public DbSet<CarSale.Models.CarModel> CarModel { get; set; }
+        public DbSet<CarSale.Models.TestDrive> TestDrive { get; set; }
+       
     }
 }

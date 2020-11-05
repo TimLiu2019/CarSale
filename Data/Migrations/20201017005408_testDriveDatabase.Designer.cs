@@ -4,14 +4,17 @@ using CarSale.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CarSale.Data.Migrations
 {
     [DbContext(typeof(CarSaleDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201017005408_testDriveDatabase")]
+    partial class testDriveDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected virtual void BuildTargetModel(ModelBuilder modelBuilder)
+        //   protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,9 +41,6 @@ namespace CarSale.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsUsed")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Make")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -55,15 +55,13 @@ namespace CarSale.Data.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TestDriveId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<bool>("isUsed")
+                        .HasColumnType("bit");
 
-                    b.HasIndex("TestDriveId");
+                    b.HasKey("Id");
 
                     b.ToTable("CarModel");
                 });
@@ -74,6 +72,9 @@ namespace CarSale.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -106,6 +107,8 @@ namespace CarSale.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId");
 
                     b.ToTable("TestDrive");
                 });
@@ -310,11 +313,13 @@ namespace CarSale.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CarSale.Models.CarModel", b =>
+            modelBuilder.Entity("CarSale.Models.TestDrive", b =>
                 {
-                    b.HasOne("CarSale.Models.TestDrive", "TestDrive")
+                    b.HasOne("CarSale.Models.CarModel", "Car")
                         .WithMany()
-                        .HasForeignKey("TestDriveId");
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

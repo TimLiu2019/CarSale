@@ -26,11 +26,11 @@ namespace CarSale.Models
 
         public int Mileage { get; set; }
 
-        public bool isUsed { get; set; }
+        public bool IsUsed { get; set; }
 
         [Required]
         public string CarImage { get; set; }
-
-     //   public bool isNew { get; set; }
+ 
+        public TestDrive TestDrive { get; set; }
     }
 }
