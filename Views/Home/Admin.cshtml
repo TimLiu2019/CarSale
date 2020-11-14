@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Home" asp-action="Admin">Reports <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Images">Images</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Brand', 'Last Year', 'This Year'],
+                ['BMW', 11336, 16065],
+                ['Honda', 105375, 149974],
+                ['Ford', 93905, 114818],
+                ['Lexus', 16288, 21479],
+                ['Mazda', 47592, 57452],
+                ['Subaru', 41895, 47689],
+                ['Toyota', 137871, 183233],
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'YTD This Year vs YTD Last Year',
+                    subtitle: '',
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+</head>
+<body>
+    <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+</body>
+</html>
+

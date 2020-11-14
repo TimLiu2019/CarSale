@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarSale
 {
@@ -31,11 +32,28 @@ namespace CarSale
             services.AddDbContext<CarSaleDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<CarSaleDbContext>();
+             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<CarSaleDbContext>(); 
+          /*  services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+              .AddEntityFrameworkStores<CarSaleDbContext>()
+              .AddRoles<IdentityRole>(); */
+           //   .AddDefaultUI(UIFramework.Bootstrap4);
+            /*
+             *services.AddDefaultIdentity<ApplicationUser>()
+                     .AddRoles<IdentityRole>()
+                     .AddDefaultUI(UIFramework.Bootstrap4)
+                     .AddEntityFrameworkStores<ApplicationDbContext>();
+             */
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddDefaultIdentity<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DbContext>();
+            services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
+            //services.AddDefaultIdentity<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,21 +89,21 @@ namespace CarSale
                 endpoints.MapRazorPages();
             });
     
-                CreateRoles(serviceProvider).GetAwaiter().GetResult();
+             //   CreateRoles(serviceProvider).GetAwaiter().GetResult();
      
      
         }
 
-        public class ApplicationUser : IdentityUser
-        {
+  //      public class ApplicationUser : IdentityUser
+  //      {
            // public virtual string Email { get; set; } // example, not necessary
-        }
+   //     } 
 
         private async Task CreateRoles(IServiceProvider serviceProvider)
         {
             //initializing custom roles 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
             string[] roleNames = { "Admin", "Manager", "Member" };
             IdentityResult roleResult;
 
@@ -100,7 +118,7 @@ namespace CarSale
             }
 
             //Here you could create a super user who will maintain the web app
-            var poweruser = new ApplicationUser
+            var poweruser = new IdentityUser
             {
 
                 UserName = Configuration["AppSettings:UserName"],
@@ -120,6 +138,6 @@ namespace CarSale
 
                 }
             }
-        }
+        } 
     }
 }

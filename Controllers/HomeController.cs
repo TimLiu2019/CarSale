@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CarSale.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarSale.Controllers
 {
@@ -17,13 +18,22 @@ namespace CarSale.Controllers
         {
             _logger = logger;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult Admin()
+        {
+            return View();
+        }
+
+        public IActionResult Images()
         {
             return View();
         }
