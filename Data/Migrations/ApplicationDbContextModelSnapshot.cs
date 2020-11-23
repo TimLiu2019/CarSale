@@ -68,6 +68,27 @@ namespace CarSale.Data.Migrations
                     b.ToTable("CarModel");
                 });
 
+            modelBuilder.Entity("CarSale.Models.HomeImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Slide1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Slide2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Slide3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HomeImage");
+                });
+
             modelBuilder.Entity("CarSale.Models.TestDrive", b =>
                 {
                     b.Property<int>("Id")

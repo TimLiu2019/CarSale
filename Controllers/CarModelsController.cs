@@ -10,6 +10,7 @@ using CarSale.Models;
 using CarSale.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarSale.Controllers
 {
@@ -44,6 +45,7 @@ namespace CarSale.Controllers
         //}
 
         // GET: CarModels
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index(string searchString )
         {
             var cars = from s in _context.CarModel
@@ -147,6 +149,7 @@ namespace CarSale.Controllers
 
 
         // GET: CarModels/Create
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             return View();
@@ -157,7 +160,8 @@ namespace CarSale.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Make,Model,Year,Color,Engine,Price,Mileage,CarImage")] CarModel carModel)
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> Create([Bind("Id,Make,Model,Year,Color,Engine,Price,Mileage,IsUsed,CarImage")] CarModel carModel)
         {
             if (ModelState.IsValid)
             {
@@ -169,6 +173,7 @@ namespace CarSale.Controllers
         }
 
         // GET: CarModels/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -189,6 +194,7 @@ namespace CarSale.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Make,Model,Year,Color,Engine,Price,Mileage,CarImage")] CarModel carModel)
         {
             if (id != carModel.Id)
@@ -220,6 +226,7 @@ namespace CarSale.Controllers
         }
 
         // GET: CarModels/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -240,6 +247,7 @@ namespace CarSale.Controllers
         // POST: CarModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var carModel = await _context.CarModel.FindAsync(id);
@@ -269,5 +277,7 @@ namespace CarSale.Controllers
             }
             return uniqueFileName;
         }
+
+        
     }
 }

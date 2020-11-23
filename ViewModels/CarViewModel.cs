@@ -21,8 +21,7 @@ namespace CarSale.ViewModels
         [Required(ErrorMessage = "Please enter Year")]
         public int Year { get; set; }
 
-        [Required(ErrorMessage = "Please choose gender")]
-        public string Gender { get; set; }
+   
 
         [Required(ErrorMessage = "Please enter Color")]
         public string Color { get; set; }

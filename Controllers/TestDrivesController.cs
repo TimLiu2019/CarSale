@@ -21,6 +21,7 @@ namespace CarSale.Controllers
         }
 
         // GET: TestDrives
+        [Authorize(Roles = "Member")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.TestDrive.ToListAsync());
@@ -52,13 +53,15 @@ namespace CarSale.Controllers
         }
 
         // POST: TestDrives/Create
-       public IActionResult Create( )
+        [Authorize(Roles = "Member")]
+        public IActionResult Create( )
         {
             return View();
         }
 
         // POST: TestDrives/ApproveTestDrive
-             public async Task<IActionResult> ApproveTestDrive(int? id)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ApproveTestDrive(int? id)
         {
             if (id == null)
             {

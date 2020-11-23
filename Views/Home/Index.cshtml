@@ -81,18 +81,18 @@
 
 
     <div class="slideshow-container" style="width: calc(100vw - 100px); min-width: 924px; height: calc(100vh - 340px) ;">
-        <div class="mySlides1">
-            <img src="~/images/iris.png" style="width:90%;height:90%">
+        <div class="mySlides1"> 
+            <img src="~/images/@(ViewBag.Tree)" id="monthly" style="width:70%;height:70%">
             <div class="text">Monthly Promotions</div>
         </div>
 
         <div class="mySlides1">
-            <img src="~/images/civic.png" style=" height: 60%; width:60%;margin-left:150px">
+            <img  src="~/images/@(ViewBag.Tree2)" id="special" style=" height: 60%; width:60%;margin-left:150px">
             <div class="text">Manager's Specials</div>
         </div>
 
         <div class="mySlides1">
-            <img src="~/images/sequoia.png" style=" height: 50%; width:50%;margin-left:150px;margin-top:50px;">
+            <img  src="~/images/@(ViewBag.Tree3)" id="allNew" style=" height: 50%; width:50%;margin-left:150px;margin-top:50px;">
             <div class="text">The All New</div>
         </div>
 
@@ -104,10 +104,12 @@
         <a class="btn btn-primary" asp-area="" asp-controller="CarModels" asp-action="UsedCar">Search Used Vehicles >> </a>
         <!-- <a style="float:left; margin-left:20px;background-color:#0e60e7;color:white;border-radius: 4px;border: none;  " class="btn btn-primary mb-3" asp-area="" asp-controller="CarModels" asp-action="NewCar"> Search New Vehicles >></a>
          <button style="margin-left:30px;background-color:#0e60e7;color:white;border-radius: 4px;border: none;" asp-area="" asp-controller="CarModels" asp-action="UsedCar"> Search Used Vehicles >></button> -->
-    </div>
+        </div>
 
 
     <script>
+      
+
         var slideIndex = [1, 1];
         var slideId = ["mySlides1", "mySlides2"]
         showSlides(1, 0);

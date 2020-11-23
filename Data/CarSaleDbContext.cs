@@ -18,6 +18,7 @@ namespace CarSale.Data
 
         public DbSet<CarSale.Models.CarModel> CarModel { get; set; }
         public DbSet<CarSale.Models.TestDrive> TestDrive { get; set; }
+        public DbSet<CarSale.Models.HomeImage> HomeImage { get; set; }
        
     }
 }

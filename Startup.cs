@@ -35,7 +35,7 @@ namespace CarSale
              services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<CarSaleDbContext>(); 
-          /*  services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+         /*   services.AddDefaultIdentity<ApplUser>(options => options.SignIn.RequireConfirmedAccount = true)
               .AddEntityFrameworkStores<CarSaleDbContext>()
               .AddRoles<IdentityRole>(); */
            //   .AddDefaultUI(UIFramework.Bootstrap4);
@@ -89,7 +89,7 @@ namespace CarSale
                 endpoints.MapRazorPages();
             });
     
-             //   CreateRoles(serviceProvider).GetAwaiter().GetResult();
+     //           CreateRoles(serviceProvider).GetAwaiter().GetResult();
      
      
         }

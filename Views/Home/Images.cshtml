@@ -17,5 +17,80 @@
         </ul>
     </div>
 </nav>
+<!DOCTYPE html>
+<html>
+<head>
+ 
+
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Home page slides</h2>
+        <button type="button" class="btn btn-info btn-block black-button">Renew Monthly Promotions</button>
+        <button type="button" class="btn btn-info btn-block red-button">Renew Manager's Special</button>
+        <button type="button" class="btn btn-info btn-block blue-button">Renew The All New</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      //  localStorage.setItem('myMonthly', '/images/amg.jpg');
+        function changeMonthly() {
+            var imgm = document.getElementById("monthly");
+
+            //Set the src property of our element to the new image URL
+            imgm.src ="@Url.Content("~/images/2015A4.jpg")"
+        }
+      /*  function changeSpecial() {
+            var imgs = document.getElementById("special");
+
+            //Set the src property of our element to the new image URL
+            imgs.src = '~/images/2011-toyota-highlander.jpg';
+        }
+        function changeAllNew() {
+            var imga = document.getElementById("allNew");
+
+            //Set the src property of our element to the new image URL
+            imga.src = '~/images/amg.jpg';
+        }
+
+        window.onload = function () {
+            window.img = document.getElementById("monthly");
+            setInterval("changeMonthly()", 5000)
+        }
+          */
+        jQuery(document).ready(function($){
+
+$('.black-button').on({
+    'click': function () {
+        $.cookie("slide1', 'newSlide1");
+      //  localStorage.setItem('myMonthly', '/images/amg.jpg');
+      //  $('#monthly').attr('src', '/images/2015A4.jpg');
+        alert("Monthly has changed");
+}
+});
+
+$('.red-button').on({
+'click': function(){
+          $.cookie("slide2", "newSlide1");
+          alert("Special has changed");
+}
+});
+
+$('.blue-button').on({
+'click': function(){
+        $.cookie("slide3", "newSlide3");
+          alert("All new has changed");
+}
+});
+
+
+});
+
+
+
+    </script>
+
+</body>
+</html>
 
 
